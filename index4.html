@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danish Anjum - .NET Full Stack Developer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --accent: #e74c3c;
+      --text-light: #ffffff;
+      --text-muted: #bdc3c7;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: var(--primary);
+      color: var(--text-light);
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
+      color: white;
+      padding: 100px 0;
+    }
+
+    .hero-section img {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-section img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+    
+    .section-title {
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--secondary);
+    }
+
+    .project-card {
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+      margin-bottom: 30px;
+      background-color: #34495e;
+      color: var(--text-light);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-subtitle {
+      color: var(--text-muted) !important;
+    }
+
+    .tech-badge {
+      background: var(--secondary);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      margin: 2px;
+    }
+    
+    /* ===== Square Button Skill Section ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 15px;
+    }
+
+    .skill-box {
+      background: #34495e;
+      border: 2px solid var(--secondary);
+      color: var(--text-light);
+      font-weight: 600;
+      text-align: center;
+      padding: 15px 10px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-box:hover {
+      background: var(--secondary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .skill-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .skill-list li {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-light);
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .skill-list li i {
+      color: var(--secondary);
+      margin-right: 10px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .skill-list li:hover i {
+      color: var(--text-light);
+      transform: scale(1.2);
+    }
+
+    /* Additional styling for sections */
+    #about, #projects, #experience, #contact {
+      background-color: #34495e;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    #about .container, #projects .container, #experience .container, #contact .container {
+      padding: 40px 20px;
+    }
+
+    /* Dark theme adjustments */
+    .bg-light {
+      background-color: #34495e !important;
+      color: var(--text-light);
+    }
+    
+    .text-primary {
+      color: var(--secondary) !important;
+    }
+    
+    .text-muted {
+      color: var(--text-muted) !important;
+    }
+    
+    .btn-light {
+      background-color: var(--text-light);
+      color: var(--primary);
+      border: none;
+    }
+    
+    .btn-outline-light {
+      color: var(--text-light);
+      border-color: var(--text-light);
+    }
+    
+    .btn-outline-light:hover {
+      background-color: var(--text-light);
+      color: var(--primary);
+    }
+    
+    .btn-primary {
+      background-color: var(--secondary);
+      border-color: var(--secondary);
+    }
+    
+    .btn-success {
+      background-color: #27ae60;
+      border-color: #27ae60;
+    }
+    
+    .experience-item {
+      color: var(--text-light);
+    }
+    
+    .navbar-dark {
+      background-color: #1a2530 !important;
+    }
+    
+    footer {
+      background-color: #1a2530 !important;
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Danish Anjum</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container text-center">
+      <img src="Danish_Pic.jpg" alt="Danish Anjum" class="rounded-circle mb-4" width="180" height="180"
+        style="object-fit: cover; border: 4px solid #fff;">
+      <h1 class="display-4 fw-bold">Danish Anjum</h1>
+      <h2 class="h3 mb-4">.NET Full Stack Developer</h2>
+      <p class="lead mb-4">Building scalable web applications with ASP.NET Core, Angular & SQL Server</p>
+      <div class="mt-4">
+        <a href="#contact" class="btn btn-light btn-lg me-3">Hire Me</a>
+        <a href="#projects" class="btn btn-outline-light btn-lg">View Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section --> 
+  <section id="about" class="py-5"> 
+    <div class="container">
+      <h2 class="section-title">About Me</h2> 
+      <div class="row align-items-center"> 
+        <div class="col-md-4 text-center mb-4 mb-md-0"> 
+          <img src="Danish_Pic.jpg" alt="Danish Anjum" class="rounded-circle shadow" width="220" height="220" style="object-fit: cover;"> 
+        </div> 
+        <div class="col-md-8"> 
+          <p class="fs-5"> 
+            I'm a dedicated .NET Full Stack Developer with over 3 years of professional experience in building robust, scalable, and high-performance web applications. 
+            My expertise lies in ASP.NET MVC, .NET Core, C#, Entity Framework, SQL Server, and Web API, complemented by strong front-end skills in HTML, CSS, JavaScript, and Bootstrap.
+            I'm passionate about crafting clean, maintainable, and efficient code that transforms business requirements into powerful digital solutions. I have a proven track record of optimizing 
+            application performance, enhancing security, and ensuring smooth user experiences across all layers of development.Beyond coding, I'm driven by continuous learning and a desire to stay 
+            updated with emerging technologies. My goal is to contribute to innovative projects that make a meaningful impact while growing as a developer and team player.
+          </p> 
+          <div class="row mt-4">
+            <div class="col-md-6"> 
+              <p><strong>Email:</strong> danjum170@gmail.com</p> 
+              <p><strong>Phone:</strong> +91-9479326051</p>
+            </div> 
+            <div class="col-md-6">
+              <p><strong>Location:</strong> Hyderabad, Telangana</p> 
+              <p><strong>Status:</strong> Available for new opportunities</p>
+            </div> 
+          </div>
+        </div> 
+      </div> 
+    </div> 
+  </section>
+
+  <!-- Technical Skills Section -->
+  <section id="skills" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+
+      <div class="row g-4">
+        <!-- Programming Languages -->
+        <div class="col-md-6">
+          <h4 class="text-primary mb-3">Programming Languages</h4>
+          <ul class="skill-list">
+            <li><i class="fa fa-check-circle"></i> C#</li>
+            <li><i class="fa fa-check-circle"></i> C</li>
+            <li><i class="fa fa-check-circle"></i> C++</li>
+          </ul>
+        </div>
+
+        <!-- Web Technologies -->
+        <div class="col-md-6">
+          <h4 class="text-primary mb-3">Web Technologies</h4>
+          <ul class="skill-list">
+            <li><i class="fa fa-check-circle"></i> ASP.NET Core</li>
+            <li><i class="fa fa-check-circle"></i> ASP.NET Web API</li>
+            <li><i class="fa fa-check-circle"></i> JavaScript</li>
+            <li><i class="fa fa-check-circle"></i> Material UI</li>
+            <li><i class="fa fa-check-circle"></i> HTML5</li>
+            <li><i class="fa fa-check-circle"></i> CSS</li>
+          </ul>
+        </div>
+
+        <!-- Architecture & Design -->
+        <div class="col-md-6">
+          <h4 class="text-primary mb-3">Architecture & Design</h4>
+          <ul class="skill-list">
+            <li><i class="fa fa-check-circle"></i> N-Tier Architecture</li>
+            <li><i class="fa fa-check-circle"></i> Design Patterns</li>
+            <li><i class="fa fa-check-circle"></i> SOLID Principles</li>
+            <li><i class="fa fa-check-circle"></i> OOPS</li>
+          </ul>
+        </div>
+
+        <!-- Database -->
+        <div class="col-md-6">
+          <h4 class="text-primary mb-3">Database Technologies</h4>
+          <ul class="skill-list">
+            <li><i class="fa fa-check-circle"></i> SQL Server</li>
+            <li><i class="fa fa-check-circle"></i> MySQL</li>
+          </ul>
+        </div>
+
+        <!-- DevOps & Tools -->
+        <div class="col-md-6">
+          <h4 class="text-primary mb-3">DevOps & Tools</h4>
+          <ul class="skill-list">
+            <li><i class="fa fa-check-circle"></i> Azure DevOps</li>
+            <li><i class="fa fa-check-circle"></i> Git</li>
+            <li><i class="fa fa-check-circle"></i> Visual Studio</li>
+          </ul>
+        </div>
+
+        <!-- Frameworks & Libraries -->
+        <div class="col-md-6">
+          <h4 class="text-primary mb-3">Frameworks & Libraries</h4>
+          <ul class="skill-list">
+            <li><i class="fa fa-check-circle"></i> Entity Framework</li>
+            <li><i class="fa fa-check-circle"></i> LINQ</li>
+            <li><i class="fa fa-check-circle"></i> MVC</li>
+            <li><i class="fa fa-check-circle"></i> ASP.NET Core MVC</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-5">
+    <div class="container">
+      <h1 class="section-title">Projects</h1>
+      <div class="row">
+        <!-- LIMS Project -->
+        <div class="col-lg-6">
+          <div class="project-card card h-100">
+            <div class="card-body">
+              <h4 class="card-title">LIMS</h4>
+              <h6 class="card-subtitle mb-2 text-muted">Laboratory Information Management System</h6>
+              <p class="card-text">
+                A comprehensive web-based laboratory management system designed to streamline and automate 
+                laboratory operations. The system efficiently manages test samples, workflows, and data records, 
+                while generating accurate and timely analytical reports. It ensures regulatory compliance, enhances
+                 data integrity, and improves overall laboratory productivity through centralized management and 
+                 secure access control.
+              </p>
+              <div class="mb-3">
+                <span class="tech-badge">C#</span>
+                <span class="tech-badge">ASP.NET Core MVC</span>
+                <span class="tech-badge">SQL Server</span>
+                <span class="tech-badge">REST APIs</span>
+                <span class="tech-badge">Azure DevOps</span>
+              </div>
+              <ul>
+                <li>Developed core modules for sample tracking and test management</li>
+                <li>Implemented role-based authentication & authorization</li>
+                <li>Optimized SQL Server database performance</li>
+                <li>Integrated RESTful APIs with lab instruments</li>
+                <li>Automated report generation using SSRS</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aspyro Project -->
+        <div class="col-lg-6">
+          <div class="project-card card h-100">
+            <div class="card-body">
+              <h4 class="card-title">Aspyro</h4>
+              <h6 class="card-subtitle mb-2 text-muted">Web-based Automation Platform</h6>
+              <p class="card-text">
+                Aspyro is a powerful web-based automation platform designed to streamline internal business 
+                 workflows and automate complex, data-driven processes for enterprise clients.The platform enables
+                 organizations to improve operational efficiency, reduce manual intervention, and ensure accuracy 
+                 and consistency across all departments.With a focus on scalability, performance, and security,
+                 Aspyro integrates seamlessly with existing enterprise systems, providing real-time data 
+                 synchronization and intelligent task automation.
+              </p>
+              <div class="mb-3">
+                <span class="tech-badge">C#</span>
+                <span class="tech-badge">ASP.NET Core</span>
+                <span class="tech-badge">SQL Server</span>
+                <span class="tech-badge">Git</span>
+                <span class="tech-badge">Azure DevOps</span>
+              </div>
+              <ul>
+                <li>Implemented CI/CD pipelines using Azure DevOps</li>
+                <li>Developed reusable C# code for business logic</li>
+                <li>Integrated third-party libraries and RESTful APIs</li>
+                <li>Optimized SQL queries for better performance</li>
+                <li>Collaborated using Git and Agile methodologies</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title">Work Experience</h2>
+
+      <div class="experience-item mb-4">
+        <div class="d-flex justify-content-between">
+          <h4>Software Engineer</h4>
+          <span class="text-muted">Sep 2024 - Apr 2025</span>
+        </div>
+        <h5 class="text-primary">Caliber Technologies Pvt Ltd.</h5>
+        <ul>
+          <li>Developed and optimized backend components using C#, ASP.NET Core, and Entity Framework</li>
+          <li>Managed CI/CD pipelines using Azure DevOps for reliable delivery</li>
+          <li>Resolved performance issues in .NET applications</li>
+          <li>Served as technical support contact for clients</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <div class="d-flex justify-content-between">
+          <h4>Software Engineer</h4>
+          <span class="text-muted">March 2022 - Sep 2024</span>
+        </div>
+        <h5 class="text-primary">Ascend Avenue Solutions Pvt Ltd.</h5>
+        <ul>
+          <li>Developed modules for Aspyro Project</li>
+          <li>Implemented CI/CD pipelines for ASP.NET Core apps</li>
+          <li>Wrote reusable C# code for business logic</li>
+          <li>Integrated RESTful APIs and third-party libraries</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <div class="mb-4">
+            <i class="fas fa-envelope fa-2x text-primary me-3"></i>
+            <h4>danjum170@gmail.com</h4>
+          </div>
+          <div class="mb-4">
+            <i class="fas fa-phone fa-2x text-primary me-3"></i>
+            <h4>+91-9479326051</h4>
+          </div>
+          <div class="mb-4">
+            <i class="fab fa-whatsapp fa-2x text-success me-3"></i>
+            <h4>+91-9479326051</h4>
+          </div>
+          <div class="mb-4">
+            <i class="fas fa-map-marker-alt fa-2x text-primary me-3"></i>
+            <h4>Hyderabad, Telangana (India)</h4>
+          </div>
+          <div class="mt-4">
+            <a href="mailto:danjum170@gmail.com" class="btn btn-primary btn-lg me-3">
+              <i class="fas fa-envelope me-2"></i>Email Me
+            </a>
+            <a href="https://wa.me/919479326051?text=Hi%20Danish,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect." 
+               class="btn btn-success btn-lg me-3" target="_blank">
+              <i class="fab fa-whatsapp me-2"></i>WhatsApp
+            </a>
+            <a href="https://linkedin.com/in/danish-anjum" class="btn btn-outline-primary btn-lg" target="_blank">
+              <i class="fab fa-linkedin me-2"></i>LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+      <p>&copy; 2024 Danish Anjum. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
